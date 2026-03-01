@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bolso Esqueleto — Jessica Duffy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #F2C4C4;
+    --terracotta: #C9533A;
+    --dark: #1a1614;
+    --warm-off-white: #FAF7F4;
+    --brown: #7a4a2c;
+    --muted: #8a7c78;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-off-white);
+    color: var(--dark);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    background: rgba(250,247,244,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  nav a {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--dark);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  nav a:hover { color: var(--terracotta); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-style: normal;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+    overflow: hidden;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 5rem;
+  }
+
+  .project-label {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .project-label::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--muted);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 400px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 2rem;
+    max-width: 400px;
+  }
+
+  .meta-item label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .meta-item span {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+  }
+
+  .hero-visual {
+    background: var(--pink);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-visual::before {
+    content: 'BOLSO\AESQUE\ALETO';
+    white-space: pre;
+    font-family: var(--serif);
+    font-size: 18vw;
+    font-weight: 600;
+    color: rgba(201,83,58,0.12);
+    line-height: 0.85;
+    position: absolute;
+    letter-spacing: -0.05em;
+    pointer-events: none;
+  }
+
+  .hero-img-container {
+    position: relative;
+    z-index: 2;
+    width: 70%;
+    max-width: 420px;
+  }
+
+  .hero-img-container img {
+    width: 100%;
+    filter: drop-shadow(0 30px 60px rgba(0,0,0,0.25));
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 8rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  section.full-bleed {
+    max-width: none;
+    padding: 8rem 0;
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 40px;
+    height: 1px;
+    background: var(--terracotta);
+    opacity: 0.5;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 em { font-style: italic; color: var(--terracotta); }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    color: #4a4240;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    max-width: 620px;
+  }
+
+  /* ── PROBLEM / OPPORTUNITY ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .callout {
+    background: var(--terracotta);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 2px;
+  }
+
+  .callout p {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
+  }
+
+  .callout h3 {
+    color: white;
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  .stat {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: white;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 2rem;
+  }
+
+  /* ── PROCESS TIMELINE ── */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    border-left: 1px solid rgba(0,0,0,0.08);
+    margin-top: 3rem;
+  }
+
+  .process-step {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(0,0,0,0.08);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    transition: background 0.3s ease;
+  }
+
+  .process-step:hover {
+    background: var(--pink);
+  }
+
+  .step-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: rgba(0,0,0,0.08);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  .step-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+  }
+
+  .step-tech {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    border: 1px solid var(--terracotta);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    margin-top: 0.75rem;
+  }
+
+  .process-step p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── TECHNIQUE SPLIT ── */
+  .technique-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(0,0,0,0.08);
+    margin-top: 3rem;
+  }
+
+  .technique-panel {
+    background: var(--warm-off-white);
+    padding: 4rem 3.5rem;
+  }
+
+  .technique-panel:first-child {
+    background: var(--dark);
+    color: white;
+  }
+
+  .technique-panel:first-child p { color: rgba(255,255,255,0.65); }
+  .technique-panel:first-child h3 { color: white; }
+  .technique-panel:first-child .section-label { color: var(--pink); }
+  .technique-panel:first-child .section-label::after { background: var(--pink); }
+
+  .technique-list {
+    list-style: none;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .technique-list li {
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #4a4240;
+  }
+
+  .technique-panel:first-child .technique-list li {
+    color: rgba(255,255,255,0.75);
+  }
+
+  .technique-list li::before {
+    content: '→';
+    color: var(--terracotta);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .technique-panel:first-child .technique-list li::before {
+    color: var(--pink);
+  }
+
+  /* ── MODULAR SYSTEM ── */
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .module-card {
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .module-card:hover {
+    border-color: var(--terracotta);
+    transform: translateY(-4px);
+  }
+
+  .module-card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: -0.5rem;
+    right: 1rem;
+    font-family: var(--serif);
+    font-size: 6rem;
+    font-weight: 600;
+    color: rgba(0,0,0,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .module-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+  .module-card p { font-size: 0.85rem; max-width: none; }
+
+  /* ── GALLERY ── */
+  .gallery-strip {
+    background: var(--pink);
+    padding: 5rem;
+    overflow: hidden;
+  }
+
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .gallery-item {
+    background: var(--warm-off-white);
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .gallery-item.tall { grid-row: span 2; aspect-ratio: unset; }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+  }
+
+  /* ── CONCLUSION ── */
+  .conclusion-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .conclusion-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--terracotta);
+    border-left: 2px solid var(--terracotta);
+    padding-left: 2rem;
+  }
+
+  /* ── FOOTER NAV ── */
+  .case-footer {
+    background: var(--dark);
+    padding: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .case-footer a {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: white;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .case-footer a:hover { color: var(--pink); }
+
+  .case-footer small {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-visual { min-height: 50vw; }
+    .hero-text { padding: 5rem 2rem 3rem; }
+    section { padding: 5rem 2rem; }
+    .two-col, .conclusion-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .technique-split { grid-template-columns: 1fr; }
+    .gallery-strip { padding: 3rem 1.5rem; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item.tall { grid-row: span 1; aspect-ratio: 4/5; }
+    .case-footer { padding: 3rem 2rem; flex-direction: column; gap: 2rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://jessicaduffy.github.io/portfolio/">J. Duffy</a>
+  <ul class="nav-links">
+    <li><a href="https://jessicaduffy.github.io/portfolio/#portfolio">Work</a></li>
+    <li><a href="https://jessicaduffy.github.io/portfolio/#about">About</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <p class="project-label">Craft &amp; Innovation — 2026</p>
+    <h1>Bolso<br><em>Esqueleto</em></h1>
+    <p class="hero-desc">A modular leather bag that fuses traditional craft with digital fabrication — designed to be swapped, repaired, and owned for life.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <label>Program</label>
+        <span>UPM–CSDMM Master's</span>
+      </div>
+      <div class="meta-item">
+        <label>Subject</label>
+        <span>Craft &amp; Innovation XXI</span>
+      </div>
+      <div class="meta-item">
+        <label>Materials</label>
+        <span>Upcycled Leather, Denim</span>
+      </div>
+      <div class="meta-item">
+        <label>Techniques</label>
+        <span>Laser Cut · 3D Print</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <!-- Replace src with actual bag image path when integrating into site -->
+    <div class="hero-img-container">
+      <svg viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;opacity:0.35;">
+        <ellipse cx="200" cy="290" rx="160" ry="170" fill="#7a4a2c" opacity="0.6"/>
+        <ellipse cx="200" cy="285" rx="155" ry="165" fill="#9a6040"/>
+        <path d="M100 200 Q120 120 200 110 Q280 120 300 200" stroke="#7a4a2c" stroke-width="18" fill="none" stroke-linecap="round"/>
+        <ellipse cx="145" cy="290" rx="22" ry="18" fill="rgba(242,196,196,0.7)"/>
+        <ellipse cx="245" cy="270" rx="18" ry="14" fill="rgba(242,196,196,0.7)"/>
+        <ellipse cx="190" cy="340" rx="20" ry="16" fill="rgba(242,196,196,0.7)"/>
+        <ellipse cx="155" cy="360" rx="14" ry="11" fill="rgba(100,140,180,0.6)"/>
+        <ellipse cx="260" cy="330" rx="16" ry="12" fill="rgba(100,140,180,0.6)"/>
+        <ellipse cx="225" cy="240" rx="12" ry="10" fill="rgba(100,140,180,0.6)"/>
+      </svg>
+      <p style="text-align:center;font-family:var(--serif);font-style:italic;color:rgba(201,83,58,0.5);font-size:0.75rem;margin-top:0.5rem;">[ insert product photograph ]</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM / OPPORTUNITY -->
+<section>
+  <p class="section-label fade-up">The Brief</p>
+  <div class="two-col">
+    <div class="fade-up">
+      <h2>A fashion industry<br>that creates <em>waste</em><br>by design</h2>
+      <p style="margin-top:1.5rem;">The fast-fashion accessory market runs on disposability. Synthetic leather — often marketed as a sustainable alternative — has a lifespan of just 2–10 years and ranks among China's most polluting industries. Meanwhile, genuine leather goods crafted with care can last 50+ years but rarely offer the personalization today's consumer wants.</p>
+      <p style="margin-top:1rem;">The opportunity is not to choose between quality and individuality — it's to design a system that offers both.</p>
+    </div>
+    <div class="fade-up" style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="callout">
+        <div class="stat">50+</div>
+        <div class="stat-label">years lifespan, natural leather</div>
+        <p>vs. 2–10 years for synthetic alternatives — a difference that reframes "sustainable" entirely.</p>
+      </div>
+      <div style="border:1px solid rgba(0,0,0,0.08);padding:2rem;">
+        <h3 style="font-family:var(--serif);font-size:1.1rem;margin-bottom:0.5rem;">The Design Response</h3>
+        <p style="font-size:0.85rem;">Design a durable, modular object in upcycled leather that users can personalize, repair, and evolve — combining traditional leatherwork with digital fabrication tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section style="padding-top:0;">
+  <p class="section-label fade-up">Process</p>
+  <h2 class="fade-up">From <em>concept</em> to craft</h2>
+  <div class="process-grid">
+    <div class="process-step fade-up">
+      <div class="step-num">01</div>
+      <div class="step-title">AI-Assisted Ideation</div>
+      <p>Concept images generated with Gemini to explore form language — organic holes, layered textiles, interchangeable hardware — before committing to physical materials.</p>
+      <span class="step-tech">Generative AI</span>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-num">02</div>
+      <div class="step-title">Upcycled Sourcing</div>
+      <p>A secondhand leather jacket provided the bag body; vintage denim trousers became the inner linings. Every piece was chosen to exploit existing seams and texture.</p>
+      <span class="step-tech">Upcycling</span>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-num">03</div>
+      <div class="step-title">Digital Fabrication</div>
+      <p>Laser cutting shaped the skeleton's signature apertures with precision. The handle was modelled in Blender, 3D-printed, and finished by hand with a 3D pen for hardware attachment.</p>
+      <span class="step-tech">Laser Cut · 3D Print</span>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-num">04</div>
+      <div class="step-title">Hand Assembly</div>
+      <p>Machine-sewn construction with hand-stitched saddle stitch detailing and hand-set press-stud closures — ensuring both structural integrity and artisan finish.</p>
+      <span class="step-tech">Craft</span>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNIQUES -->
+<section class="full-bleed" style="padding:0;">
+  <div class="technique-split">
+    <div class="technique-panel">
+      <p class="section-label">Traditional Craft</p>
+      <h3>The hand is still<br>the primary tool</h3>
+      <p>Digital tools set the structure; hand skills give the object its soul. No laser cuts the final stitch. No printer closes the snap.</p>
+      <ul class="technique-list">
+        <li>Upcycled leather jacket — bag body</li>
+        <li>Secondhand denim — modular inner linings</li>
+        <li>Saddle stitch and hand-set press studs</li>
+        <li>Machine sewing for structural seams</li>
+      </ul>
+    </div>
+    <div class="technique-panel">
+      <p class="section-label">Digital Fabrication</p>
+      <h3>Technology as a finishing<br>language, not a replacement</h3>
+      <p>Each digital technique was chosen for what it uniquely enables — precision cuts the hand cannot achieve, and sculptural forms impossible to sew.</p>
+      <ul class="technique-list">
+        <li>Laser cutting — precise organic apertures in leather</li>
+        <li>3D modelling in Blender — handle form development</li>
+        <li>FDM 3D printing — chain-link handle structure</li>
+        <li>3D pen welding — hardware integration</li>
+        <li>Gemini AI — concept visualisation and iteration</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MODULAR SYSTEM -->
+<section>
+  <p class="section-label fade-up">The System</p>
+  <h2 class="fade-up">One skeleton,<br><em>infinite</em> combinations</h2>
+  <p class="fade-up" style="margin-top:1rem;">The "skeleton" concept reframes the bag as a permanent chassis — the piece you keep for life — and the linings, handles, and chain as swappable expressions of mood, occasion, or season.</p>
+  <div class="module-grid">
+    <div class="module-card fade-up" data-num="1">
+      <h3>The Skeleton</h3>
+      <p>Upcycled leather body with laser-cut apertures. Structural, permanent, and designed to age beautifully. The holes reveal the lining beneath, making the inner fabric a visible design element.</p>
+    </div>
+    <div class="module-card fade-up" data-num="2">
+      <h3>Interchangeable Linings</h3>
+      <p>Two linings included — a denim version and a silk-texture version in chartreuse — attached by hand-set press studs. Swap them out as the lining wears or your mood changes.</p>
+    </div>
+    <div class="module-card fade-up" data-num="3">
+      <h3>Three Handles</h3>
+      <p>A 3D-printed chain handle, a vintage shoulder strap, and an embellished rope handle — each changing the bag's silhouette from casual to editorial to evening.</p>
+    </div>
+    <div class="module-card fade-up" data-num="4">
+      <h3>A Draped Chain</h3>
+      <p>A brass-toned chain worn across the body of the bag — functional hardware as jewellery. Optional, stackable, and easily replaced.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery-strip">
+  <div class="gallery-header">
+    <h2 style="margin:0;font-size:2rem;">The <em>result</em></h2>
+    <p style="font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);max-width:none;">12 combinations from one kit</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item tall">
+      <span>[ hero product shot ]</span>
+    </div>
+    <div class="gallery-item">
+      <span>[ 3D-printed handle detail ]</span>
+    </div>
+    <div class="gallery-item">
+      <span>[ laser cut aperture ]</span>
+    </div>
+    <div class="gallery-item">
+      <span>[ denim lining variation ]</span>
+    </div>
+    <div class="gallery-item">
+      <span>[ chain detail ]</span>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:2rem;font-family:var(--serif);font-style:italic;color:var(--muted);font-size:0.85rem;">Replace placeholder cells with your actual photography</p>
+</div>
+
+<!-- CONCLUSION -->
+<section>
+  <p class="section-label fade-up">Reflection</p>
+  <div class="conclusion-layout">
+    <div class="conclusion-quote fade-up">
+      "Technology doesn't replace the hand — it extends what the hand can say."
+    </div>
+    <div class="fade-up">
+      <h2>A new model for<br>conscious <em>accessories</em></h2>
+      <p style="margin-top:1.5rem;">The Bolso Esqueleto demonstrates that sustainability and personalization are not opposing values — they are the same design brief approached from different angles. By separating the permanent (the skeleton) from the changeable (the linings and handles), the project proposes a repair-and-swap model that extends product life without sacrificing individual expression.</p>
+      <p style="margin-top:1rem;">The process confirmed a key insight: laser cutting functioned as a surface detail, while 3D printing was genuinely generative — enabling a handle form that would be impossible through traditional leatherwork. The most interesting design territory exists precisely at that boundary.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER NAV -->
+<div class="case-footer">
+  <div>
+    <small>Back to portfolio</small>
+    <a href="https://jessicaduffy.github.io/portfolio/">← Jessica Duffy</a>
+  </div>
+  <div style="text-align:right;">
+    <small>Next project</small>
+    <a href="#">Next case study →</a>
+  </div>
+</div>
+
+<script>
+  // Intersection Observer for fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80 * (entry.target.dataset.delay || 0));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach((el, i) => {
+    el.dataset.delay = i % 4;
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
